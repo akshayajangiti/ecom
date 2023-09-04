@@ -1,10 +1,12 @@
-var express = require('express');
-var router = express.Router();
-
-var homepageController = function(req, res) {
-  res.render('index', { title: 'Welcome to Loc8r' });
-  };
-  /* GET homepage. */
-  router.get('/', homepageController);
-
+const express = require('express');
+const router = express.Router();
+const ctrlLocations =
+require('../controllers/locations');
+const ctrlOthers = require('../controllers/others');
+/* Locations pages */
+router.get('/', ctrlLocations.homelist);
+router.get('/location', ctrlLocations.locationInfo);
+router.get('/location/review/new', ctrlLocations.addReview);
+/* Other pages */
+router.get('/about', ctrlOthers.about);
 module.exports = router;
